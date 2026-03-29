@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="About Jimmy Pidgeon | Author & Recovery Advocate"
+  description="Learn about Jimmy Pidgeon's journey from addiction to recovery, his career in nursing, and his mission to inspire others through storytelling."
+>
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="fade-in-up">About Jimmy</h1>
+    </div>
+  </div>
+
+  <section class="about-section section-padding">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image scroll-reveal">
+          <div class="image-wrapper">
+            <img src="/headshot.jpg" alt="Jimmy Pidgeon" class="headshot" />
+          </div>
+        </div>
+        
+        <div class="about-text scroll-reveal delay-100">
+          <h2>A Journey of Transformation</h2>
+          
+          <p>
+            Jimmy Pidgeon is a registered nurse, author, and devoted father whose life is a testament to the power of second chances. His story is not just one of survival, but of profound transformation.
+          </p>
+          
+          <p>
+            For years, Jimmy struggled with the heavy burden of addiction. His life spiraled into dark places, leading to personal and legal troubles that seemed insurmountable. Yet, it was in these depths that he found the resolve to change. Embracing recovery "one day at a time," Jimmy embarked on an arduous but ultimately redemptive journey.
+          </p>
+          
+          <p>
+            Today, Jimmy is a pillar of strength for his family and his community. He channeled his passion for helping others into a career in nursing, providing care and compassion to those in their most vulnerable moments. As a father, he strives every day to be the positive role model his children deserve.
+          </p>
+          
+          <p>
+            With the release of his memoir, <em>From the Streets to the Steps</em>, Jimmy hopes to shed light on the realities of addiction and the beautiful possibility of recovery. He actively shares his insights and daily reflections on social media, building a community of support for anyone seeking a way forward.
+          </p>
+          
+          <div class="values-grid">
+            <div class="value-card">
+              <span class="icon">🕊️</span>
+              <h3>Recovery</h3>
+              <p>One day at a time.</p>
+            </div>
+            <div class="value-card">
+              <span class="icon">📖</span>
+              <h3>Storytelling</h3>
+              <p>Sharing the truth to light the way.</p>
+            </div>
+            <div class="value-card">
+              <span class="icon">👨‍👧‍👦</span>
+              <h3>Family</h3>
+              <p>The reason for everything.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    color: white;
+    padding: calc(80px + var(--space-12)) 0 var(--space-12);
+    text-align: center;
+  }
+  
+  .page-hero h1 {
+    color: white;
+    margin: 0;
+  }
+  
+  .section-padding {
+    padding: var(--space-16) 0;
+  }
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+  
+  .image-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+    pointer-events: none;
+  }
+  
+  .headshot {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .about-text h2 {
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-6);
+  }
+  
+  .about-text p {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+  
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+  
+  .value-card {
+    background: var(--color-surface);
+    padding: var(--space-4);
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+  }
+  
+  .value-card .icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+  
+  .value-card h3 {
+    font-size: 1.125rem;
+    font-family: var(--font-body);
+    margin-bottom: var(--space-1);
+    color: var(--color-primary);
+  }
+  
+  .value-card p {
+    font-size: 0.875rem;
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+  
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .headshot {
+      aspect-ratio: auto;
+      max-height: 500px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

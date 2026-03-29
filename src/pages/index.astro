@@ -1,11 +1,59 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Hero from '../components/Hero.astro';
+import BookFeature from '../components/BookFeature.astro';
+import InstagramFeed from '../components/InstagramFeed.astro';
 ---
 
 <Layout>
-	<Welcome />
+  <Hero />
+  <BookFeature />
+  
+  <section class="about-teaser section-padding">
+    <div class="container">
+      <div class="teaser-content scroll-reveal">
+        <h2>About Jimmy</h2>
+        <div class="divider"></div>
+        <p class="lead">
+          Jimmy Pidgeon is a registered nurse, author, and devoted father whose life is a testament to the power of second chances. 
+          After overcoming a turbulent past marked by addiction, he now dedicates his time to helping others find their path to recovery.
+        </p>
+        <a href="/about" class="btn btn-secondary">Read His Full Story</a>
+      </div>
+    </div>
+  </section>
+  
+  <InstagramFeed />
 </Layout>
+
+<style>
+  .section-padding {
+    padding: var(--space-16) 0;
+    background-color: var(--color-bg);
+  }
+  
+  .teaser-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--color-surface);
+    padding: var(--space-10) var(--space-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin: var(--space-6) auto;
+    border-radius: 2px;
+  }
+  
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-8);
+    line-height: 1.8;
+  }
+</style>

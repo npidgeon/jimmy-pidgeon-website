@@ -1,0 +1,288 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Books by Jimmy Pidgeon | From the Streets to the Steps"
+  description="Explore 'From the Streets to the Steps: One Day at a Time,' a powerful memoir by Jimmy Pidgeon. Available in paperback and hardcover."
+>
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="fade-in-up">Books</h1>
+    </div>
+  </div>
+
+  <section class="books-section section-padding">
+    <div class="container">
+      <div class="book-card scroll-reveal">
+        <div class="book-cover-col">
+          <img
+            src="/cover.png"
+            alt="From the Streets to the Steps"
+            class="book-cover"
+          />
+        </div>
+
+        <div class="book-info-col">
+          <h2>From the Streets to the Steps</h2>
+          <h3 class="subtitle">One Day at a Time – A Memoir</h3>
+
+          <div class="metadata">
+            <p><strong>Author:</strong> Jimmy Pidgeon with Ben Rose</p>
+            <p><strong>Publisher:</strong> Oracle Bookart Publishing</p>
+            <p><strong>Release Date:</strong> January 6, 2026</p>
+            <p><strong>ISBN (Paperback):</strong> 9798349689314</p>
+            <p><strong>ISBN (Hardcover):</strong> 9798349689406</p>
+          </div>
+
+          <div class="description">
+            <p>
+              A raw and unflinching memoir chronicling Jimmy's journey from the
+              depths of addiction through the transformative power of recovery.
+              Part personal story, part guide for anyone seeking a way out, this
+              book shows that true change is possible—one day at a time.
+            </p>
+            <p>
+              From the streets where addiction seemed inescapable to the steps
+              of sustained recovery and a fulfilling life as a nurse and father,
+              Jimmy's story is a profound testament to the human spirit's
+              resilience. It's a resource for families, healthcare
+              professionals, and anyone who has ever felt that they have
+              wandered too far to find their way back home.
+            </p>
+          </div>
+
+          <div class="purchase-links">
+            <h4>Available at these retailers:</h4>
+            <div class="retailer-grid">
+              <a
+                href="https://a.co/d/05W2aYn4"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="retailer-btn amazon"
+              >
+                Amazon
+              </a>
+              <a
+                href="https://www.barnesandnoble.com/s/9798349689314"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="retailer-btn bn"
+              >
+                Barnes & Noble
+              </a>
+              <a
+                href="https://www.target.com/s?searchTerm=9798349689314"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="retailer-btn target"
+              >
+                Target
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials scroll-reveal delay-200">
+        <h3 class="text-center">What Readers Are Saying</h3>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p class="quote">
+              "Great story of one man’s continuous journey of sobriety! A must
+              for AA and NA , frankly everyone will love the honest, raw
+              confessions Jimmy shares as well as the joy and triumphs in his
+              life. His analysis and understanding of the program is spot on."
+            </p>
+            <p class="author">— Laura G, Amazon</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">
+              "This book isn't just a memoir; it's a lifeline. The 'one day at a
+              time' approach is made real on these pages."
+            </p>
+            <p class="author">— Recovery Community</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-dark),
+      var(--color-primary)
+    );
+    color: white;
+    padding: calc(80px + var(--space-8)) 0 var(--space-8);
+    text-align: center;
+  }
+
+  .page-hero h1 {
+    color: white;
+    margin: 0;
+  }
+
+  .section-padding {
+    padding: var(--space-16) 0;
+    background-color: var(--color-bg);
+  }
+
+  .text-center {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .book-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-8);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-10);
+    margin-bottom: var(--space-16);
+  }
+
+  .book-cover {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .book-info-col h2 {
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-1);
+    font-size: 2.25rem;
+  }
+
+  .subtitle {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 1.25rem;
+    margin-bottom: var(--space-6);
+  }
+
+  .metadata {
+    background: var(--color-bg-alt);
+    padding: var(--space-4);
+    border-radius: var(--radius);
+    margin-bottom: var(--space-6);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .metadata p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-8);
+  }
+
+  .purchase-links h4 {
+    font-family: var(--font-body);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  .retailer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .retailer-btn {
+    display: inline-block;
+    padding: var(--space-3);
+    text-align: center;
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .retailer-btn.amazon {
+    background-color: #ff9900;
+    color: #111;
+  }
+  .retailer-btn.amazon:hover {
+    background-color: #e68a00;
+    transform: translateY(-2px);
+  }
+
+  .retailer-btn.bn {
+    background-color: #074b39;
+    color: white;
+  }
+  .retailer-btn.bn:hover {
+    background-color: #053327;
+    transform: translateY(-2px);
+  }
+
+  .retailer-btn.target {
+    background-color: #cc0000;
+    color: white;
+  }
+  .retailer-btn.target:hover {
+    background-color: #aa0000;
+    transform: translateY(-2px);
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .testimonial-card {
+    background: var(--color-surface);
+    padding: var(--space-8);
+    border-radius: var(--radius);
+    position: relative;
+    border-left: 4px solid var(--color-accent);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .quote {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .author {
+    color: var(--color-text-muted);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    .book-card {
+      grid-template-columns: 1fr;
+    }
+
+    .book-cover-col {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .metadata {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
