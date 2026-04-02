@@ -3,88 +3,173 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
-  <div class="container footer-content">
-    <div class="footer-brand">
-      <h3>Jimmy Pidgeon</h3>
-      <p>Author and father, sharing lessons from recovery.</p>
-      <p class="copyright">&copy; {currentYear} Jimmy Pidgeon. All rights reserved.</p>
+  <!-- Wave separator -->
+  <div class="wave-top" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0,40 C360,70 1080,10 1440,40 L1440,60 L0,60 Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <div class="footer-inner">
+    <!-- Book CTA band -->
+    <div class="footer-cta-band">
+      <div class="container">
+        <div class="footer-cta-content">
+          <p class="footer-cta-text">Ready to begin the journey?</p>
+          <a 
+            href="https://a.co/d/05W2aYn4" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn btn-warm"
+            id="footer-buy-btn"
+          >
+            Get Your Copy Today
+          </a>
+        </div>
+      </div>
     </div>
-    
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/books">Books</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </div>
-    
-    <div class="footer-connect">
-      <h4>Connect</h4>
-      <a href="https://instagram.com/jcp83recovery" target="_blank" rel="noopener noreferrer" class="social-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-        @jcp83recovery
-      </a>
-      <a href="https://www.linkedin.com/in/jimmy-pidgeon-193b08199/" target="_blank" rel="noopener noreferrer" class="social-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        LinkedIn
-      </a>
-      <a href="/contact" class="social-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        Get in touch
-      </a>
+
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3>Jimmy Pidgeon</h3>
+        <p>Author and father, sharing lessons from recovery.</p>
+        <p class="copyright">&copy; {currentYear} Jimmy Pidgeon. All rights reserved.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/books">Books</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-connect">
+        <h4>Connect</h4>
+        <!-- Instagram -->
+        <a href="https://instagram.com/jcp83recovery" target="_blank" rel="noopener noreferrer" class="social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          @jcp83recovery
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/jimmy-pidgeon-193b08199/" target="_blank" rel="noopener noreferrer" class="social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+          LinkedIn
+        </a>
+        <!-- Email -->
+        <a href="/contact" class="social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Get in touch
+        </a>
+      </div>
     </div>
   </div>
 </footer>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
 
 <style>
   .footer {
     background-color: var(--color-primary-dark);
     color: white;
-    padding: var(--space-8) 0 var(--space-8);
     position: relative;
-    margin-top: auto;
+    margin-top: 0;
   }
-  
-  .footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+
+  /* Wave top separator */
+  .wave-top {
+    color: var(--color-bg-alt); /* matches previous section bg */
+    line-height: 0;
+    overflow: hidden;
+    margin-bottom: -1px;
+    height: 50px;
   }
-  
+
+  .wave-top svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .footer-inner {
+    padding-top: 0;
+  }
+
+  /* Mini CTA band */
+  .footer-cta-band {
+    background: linear-gradient(135deg, hsl(210, 60%, 24%), hsl(210, 55%, 32%));
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .footer-cta-text {
+    margin: 0;
+    font-size: 1.15rem;
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+  }
+
   .footer-content {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: var(--space-8);
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-8);
   }
   
   .footer h3 {
     color: white;
     margin-bottom: var(--space-2);
+    font-size: 1.3rem;
   }
   
   .footer h4 {
     color: var(--color-accent-light);
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     margin-bottom: var(--space-4);
   }
   
   .footer p {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
   
   .copyright {
-    margin-top: var(--space-6);
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6) !important;
+    margin-top: var(--space-5);
+    font-size: 0.8rem !important;
+    color: rgba(255, 255, 255, 0.45) !important;
   }
   
   .footer-links ul {
@@ -97,8 +182,9 @@ const currentYear = new Date().getFullYear();
   }
   
   .footer a {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.75);
     text-decoration: none;
+    transition: color 0.2s ease;
   }
   
   .footer a:hover {
@@ -115,12 +201,59 @@ const currentYear = new Date().getFullYear();
     display: flex;
     align-items: center;
     gap: var(--space-2);
+    font-size: 0.9rem;
+  }
+
+  /* Back to top button */
+  .back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .back-to-top:hover {
+    background-color: var(--color-primary-dark);
+    box-shadow: var(--shadow-lg);
   }
   
+  @media (max-width: 900px) {
+    .footer-cta-content {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
   @media (max-width: 768px) {
     .footer-content {
       grid-template-columns: 1fr;
       gap: var(--space-6);
+    }
+
+    .back-to-top {
+      bottom: 20px;
+      right: 20px;
     }
   }
 </style>

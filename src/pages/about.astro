@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import headshotImg from '../assets/images/headshot.jpg';
 ---
 
 <Layout 
@@ -7,21 +9,30 @@ import Layout from '../layouts/Layout.astro';
   description="Learn about Jimmy Pidgeon's journey from addiction to recovery, his career in nursing, and his mission to inspire others through storytelling."
 >
   <div class="page-hero">
+    <div class="page-hero-pattern" aria-hidden="true"></div>
     <div class="container">
-      <h1 class="fade-in-up">About Jimmy</h1>
+      <span class="page-label fade-in-up">His Story</span>
+      <h1 class="fade-in-up delay-100">About Jimmy</h1>
     </div>
   </div>
 
   <section class="about-section section-padding">
     <div class="container">
       <div class="about-grid">
-        <div class="about-image scroll-reveal">
+        <div class="about-image scroll-reveal-left">
           <div class="image-wrapper">
-            <img src="/headshot.jpg" alt="Jimmy Pidgeon" class="headshot" />
+            <Image 
+              src={headshotImg}
+              alt="Jimmy Pidgeon — author and recovery advocate"
+              class="headshot"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 420px"
+              quality={85}
+            />
           </div>
         </div>
         
-        <div class="about-text scroll-reveal delay-100">
+        <div class="about-text scroll-reveal-right">
           <h2>A Journey of Transformation</h2>
           
           <p>
@@ -42,20 +53,45 @@ import Layout from '../layouts/Layout.astro';
           
           <div class="values-grid">
             <div class="value-card">
-              <span class="icon">🕊️</span>
+              <div class="value-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </div>
               <h3>Recovery</h3>
               <p>One day at a time.</p>
             </div>
             <div class="value-card">
-              <span class="icon">📖</span>
+              <div class="value-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              </div>
               <h3>Storytelling</h3>
               <p>Sharing the truth to light the way.</p>
             </div>
             <div class="value-card">
-              <span class="icon">👨‍👧‍👦</span>
+              <div class="value-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
               <h3>Family</h3>
               <p>The reason for everything.</p>
             </div>
+          </div>
+
+          <div class="about-cta">
+            <a href="https://a.co/d/05W2aYn4" target="_blank" rel="noopener noreferrer" class="btn btn-warm">
+              Read the Memoir
+            </a>
+            <a href="/contact" class="btn btn-secondary">
+              Get in Touch
+            </a>
           </div>
         </div>
       </div>
@@ -65,15 +101,39 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
   .page-hero {
-    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary-dark), hsl(210, 55%, 38%));
     color: white;
-    padding: calc(80px + var(--space-12)) 0 var(--space-12);
+    padding: calc(76px + var(--space-12)) 0 var(--space-12);
     text-align: center;
+    overflow: hidden;
+  }
+
+  /* Subtle dot pattern overlay */
+  .page-hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  .page-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-warm-light);
+    margin-bottom: var(--space-3);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
   }
   
   .page-hero h1 {
     color: white;
     margin: 0;
+    position: relative;
   }
   
   .section-padding {
@@ -82,7 +142,7 @@ import Layout from '../layouts/Layout.astro';
   
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: var(--space-12);
     align-items: start;
   }
@@ -91,15 +151,16 @@ import Layout from '../layouts/Layout.astro';
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-xl);
   }
-  
+
+  /* Subtle warm amber accent border */
   .image-wrapper::after {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: var(--radius-lg);
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+    box-shadow: inset 0 0 0 2px rgba(180, 130, 55, 0.15);
     pointer-events: none;
   }
   
@@ -116,9 +177,10 @@ import Layout from '../layouts/Layout.astro';
   }
   
   .about-text p {
-    font-size: 1.125rem;
+    font-size: 1.1rem;
     color: var(--color-text);
     margin-bottom: var(--space-4);
+    line-height: 1.8;
   }
   
   .values-grid {
@@ -126,34 +188,54 @@ import Layout from '../layouts/Layout.astro';
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-4);
     margin-top: var(--space-8);
+    margin-bottom: var(--space-8);
   }
   
   .value-card {
     background: var(--color-surface);
-    padding: var(--space-4);
+    padding: var(--space-5) var(--space-4);
     border-radius: var(--radius);
     text-align: center;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--color-border);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  
-  .value-card .icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: var(--space-2);
+
+  .value-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .value-icon {
+    width: 52px;
+    height: 52px;
+    background: hsl(38, 65%, 95%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-3);
+    color: var(--color-warm);
   }
   
   .value-card h3 {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-family: var(--font-body);
+    font-weight: 600;
     margin-bottom: var(--space-1);
-    color: var(--color-primary);
+    color: var(--color-primary-dark);
   }
   
   .value-card p {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     margin: 0;
     color: var(--color-text-muted);
+  }
+
+  .about-cta {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
   }
   
   @media (max-width: 900px) {
@@ -162,14 +244,22 @@ import Layout from '../layouts/Layout.astro';
     }
     
     .headshot {
-      aspect-ratio: auto;
-      max-height: 500px;
+      aspect-ratio: 4/3;
+      max-height: 420px;
+    }
+
+    .about-cta {
+      justify-content: flex-start;
     }
   }
   
   @media (max-width: 600px) {
     .values-grid {
       grid-template-columns: 1fr;
+    }
+
+    .about-cta {
+      flex-direction: column;
     }
   }
 </style>

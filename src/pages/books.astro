@@ -1,14 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import coverImg from '../assets/images/cover.png';
 ---
 
 <Layout
   title="Books by Jimmy Pidgeon | From the Streets to the Steps"
-  description="Explore 'From the Streets to the Steps: One Day at a Time,' a powerful memoir by Jimmy Pidgeon. Available in paperback and hardcover."
+  description="Explore 'From the Streets to the Steps: One Day at a Time,' a powerful memoir by Jimmy Pidgeon. Available in paperback and hardcover on Amazon, Barnes & Noble, and Target."
 >
   <div class="page-hero">
+    <div class="page-hero-pattern" aria-hidden="true"></div>
     <div class="container">
-      <h1 class="fade-in-up">Books</h1>
+      <span class="page-label fade-in-up">The Memoir</span>
+      <h1 class="fade-in-up delay-100">Books</h1>
     </div>
   </div>
 
@@ -16,16 +20,28 @@ import Layout from "../layouts/Layout.astro";
     <div class="container">
       <div class="book-card scroll-reveal">
         <div class="book-cover-col">
-          <img
-            src="/cover.png"
-            alt="From the Streets to the Steps"
-            class="book-cover"
-          />
+          <div class="book-wrapper">
+            <Image
+              src={coverImg}
+              alt="From the Streets to the Steps — One Day at a Time, a memoir by Jimmy Pidgeon"
+              class="book-cover"
+              widths={[300, 500, 700]}
+              sizes="(max-width: 600px) 260px, (max-width: 900px) 300px, 380px"
+              quality={85}
+            />
+          </div>
         </div>
 
         <div class="book-info-col">
+          <span class="eyebrow">New Release · January 2026</span>
           <h2>From the Streets to the Steps</h2>
           <h3 class="subtitle">One Day at a Time – A Memoir</h3>
+
+          <!-- Rating -->
+          <div class="rating">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span class="rating-label">Readers love it</span>
+          </div>
 
           <div class="metadata">
             <p><strong>Author:</strong> Jimmy Pidgeon with Ben Rose</p>
@@ -55,28 +71,46 @@ import Layout from "../layouts/Layout.astro";
           <div class="purchase-links">
             <h4>Available at these retailers:</h4>
             <div class="retailer-grid">
+              <!-- Amazon -->
               <a
                 href="https://a.co/d/05W2aYn4"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="retailer-btn amazon"
+                class="retailer-btn"
+                id="buy-amazon-btn"
               >
+                <svg class="retailer-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.706c-.209.189-.512.201-.745.074-1.052-.872-1.238-1.276-1.814-2.106-1.734 1.768-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.89 5.942-1.095v-.41c0-.753.06-1.642-.385-2.294-.384-.581-1.126-.822-1.777-.822-1.209 0-2.284.62-2.548 1.907-.054.284-.263.564-.547.578l-3.065-.329c-.258-.058-.546-.266-.471-.661C5.971 1.929 8.928 1 11.604 1c1.366 0 3.151.363 4.228 1.396 1.366 1.267 1.235 2.956 1.235 4.793v4.343c0 1.306.541 1.879 1.051 2.585.179.252.218.553-.009.741l-2.965 2.938zm-1.701 4.597c-3.667 1.909-7.693 2.613-11.302 2.613-1.327 0-2.644-.139-3.94-.419-.344-.072-.424-.52-.075-.695 3.306-1.594 7.313-2.416 10.852-2.416 1.315 0 2.617.127 3.889.381.414.082.444.589.576.536z"/>
+                </svg>
                 Amazon
               </a>
+              <!-- Barnes & Noble -->
               <a
                 href="https://www.barnesandnoble.com/s/9798349689314"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="retailer-btn bn"
+                class="retailer-btn"
+                id="buy-bn-btn"
               >
-                Barnes & Noble
+                <svg class="retailer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Barnes &amp; Noble
               </a>
+              <!-- Target -->
               <a
                 href="https://www.target.com/s?searchTerm=9798349689314"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="retailer-btn target"
+                class="retailer-btn"
+                id="buy-target-btn"
               >
+                <svg class="retailer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"></circle>
+                </svg>
                 Target
               </a>
             </div>
@@ -84,23 +118,29 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </div>
 
+      <!-- Testimonials -->
       <div class="testimonials scroll-reveal delay-200">
-        <h3 class="text-center">What Readers Are Saying</h3>
+        <div class="testimonials-header">
+          <span class="section-label">Reader Reviews</span>
+          <h3>What Readers Are Saying</h3>
+        </div>
         <div class="testimonial-grid">
           <div class="testimonial-card">
+            <div class="quote-mark" aria-hidden="true">&ldquo;</div>
             <p class="quote">
-              "Great story of one man’s continuous journey of sobriety! A must
-              for AA and NA , frankly everyone will love the honest, raw
+              Great story of one man's continuous journey of sobriety! A must
+              for AA and NA, frankly everyone will love the honest, raw
               confessions Jimmy shares as well as the joy and triumphs in his
-              life. His analysis and understanding of the program is spot on."
+              life. His analysis and understanding of the program is spot on.
             </p>
-            <p class="author">— Laura G</p>
+            <p class="author">— Laura G.</p>
           </div>
           <div class="testimonial-card">
+            <div class="quote-mark" aria-hidden="true">&ldquo;</div>
             <p class="quote">
-              "With thoughtful insights into the twelve steps, anchored by personal stories of devastation and overcoming, this is a book I would offer to any newcomer questioning whether AA works."
+              With thoughtful insights into the twelve steps, anchored by personal stories of devastation and overcoming, this is a book I would offer to any newcomer questioning whether AA works.
             </p>
-            <p class="author">— Shay W</p>
+            <p class="author">— Shay W.</p>
           </div>
         </div>
       </div>
@@ -110,19 +150,38 @@ import Layout from "../layouts/Layout.astro";
 
 <style>
   .page-hero {
-    background: linear-gradient(
-      135deg,
-      var(--color-primary-dark),
-      var(--color-primary)
-    );
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary-dark), hsl(210, 55%, 38%));
     color: white;
-    padding: calc(80px + var(--space-8)) 0 var(--space-8);
+    padding: calc(76px + var(--space-10)) 0 var(--space-10);
     text-align: center;
+    overflow: hidden;
+  }
+
+  .page-hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  .page-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-warm-light);
+    margin-bottom: var(--space-3);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
   }
 
   .page-hero h1 {
     color: white;
     margin: 0;
+    position: relative;
   }
 
   .section-padding {
@@ -130,111 +189,173 @@ import Layout from "../layouts/Layout.astro";
     background-color: var(--color-bg);
   }
 
-  .text-center {
-    text-align: center;
-    margin-bottom: var(--space-8);
-  }
-
   .book-card {
     background: var(--color-surface);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    padding: var(--space-8);
+    padding: var(--space-10);
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: auto 1fr;
     gap: var(--space-10);
     margin-bottom: var(--space-16);
+    align-items: start;
+  }
+
+  .book-wrapper {
+    filter: drop-shadow(0 16px 40px rgba(0,0,0,0.2));
+    transition: filter 0.4s ease, transform 0.4s ease;
+  }
+
+  .book-wrapper:hover {
+    filter: drop-shadow(0 24px 48px rgba(0,0,0,0.26));
+    transform: translateY(-6px) rotate(-0.5deg);
   }
 
   .book-cover {
-    width: 100%;
     border-radius: 4px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    max-height: 440px;
+    width: auto;
+    display: block;
+  }
+
+  /* Eyebrow */
+  .eyebrow {
+    display: inline-block;
+    color: var(--color-warm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.78rem;
+    background-color: hsl(38, 65%, 96%);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    margin-bottom: var(--space-3);
   }
 
   .book-info-col h2 {
     color: var(--color-primary-dark);
     margin-bottom: var(--space-1);
-    font-size: 2.25rem;
+    font-size: 2.1rem;
   }
 
   .subtitle {
     color: var(--color-text-muted);
     font-family: var(--font-body);
     font-weight: 400;
-    font-size: 1.25rem;
-    margin-bottom: var(--space-6);
+    font-size: 1.15rem;
+    margin-bottom: var(--space-4);
+  }
+
+  /* Rating */
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: var(--space-5);
+  }
+
+  .stars {
+    color: var(--color-warm);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .rating-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
   }
 
   .metadata {
     background: var(--color-bg-alt);
-    padding: var(--space-4);
+    padding: var(--space-4) var(--space-5);
     border-radius: var(--radius);
     margin-bottom: var(--space-6);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-2);
+    border-left: 3px solid var(--color-warm-light);
   }
 
   .metadata p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 
   .description {
-    font-size: 1.125rem;
-    line-height: 1.7;
+    font-size: 1.05rem;
+    line-height: 1.75;
     margin-bottom: var(--space-8);
+    color: var(--color-text);
   }
 
   .purchase-links h4 {
     font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-4);
   }
 
   .retailer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    display: flex;
     gap: var(--space-3);
+    flex-wrap: wrap;
   }
 
+  /* Harmonized retailer buttons using site palette */
   .retailer-btn {
-    display: inline-block;
-    padding: var(--space-3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.2rem;
     text-align: center;
     border-radius: var(--radius);
     font-weight: 600;
+    font-size: 0.9rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 1px solid transparent;
+    background-color: var(--color-bg-alt);
+    color: var(--color-text);
+    border: 1.5px solid var(--color-border);
+    white-space: nowrap;
   }
 
-  .retailer-btn.amazon {
-    background-color: #ff9900;
-    color: #111;
-  }
-  .retailer-btn.amazon:hover {
-    background-color: #e68a00;
-    transform: translateY(-2px);
-  }
-
-  .retailer-btn.bn {
-    background-color: #074b39;
+  .retailer-btn:hover {
+    background-color: var(--color-primary);
     color: white;
-  }
-  .retailer-btn.bn:hover {
-    background-color: #053327;
+    border-color: var(--color-primary);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
   }
 
-  .retailer-btn.target {
-    background-color: #cc0000;
-    color: white;
+  .retailer-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
-  .retailer-btn.target:hover {
-    background-color: #aa0000;
-    transform: translateY(-2px);
+
+  /* Testimonials */
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .testimonials-header h3 {
+    color: var(--color-primary-dark);
+    margin: 0;
   }
 
   .testimonial-grid {
@@ -245,35 +366,47 @@ import Layout from "../layouts/Layout.astro";
 
   .testimonial-card {
     background: var(--color-surface);
-    padding: var(--space-8);
-    border-radius: var(--radius);
+    padding: var(--space-8) var(--space-8) var(--space-6);
+    border-radius: var(--radius-lg);
     position: relative;
-    border-left: 4px solid var(--color-accent);
+    border-top: 4px solid var(--color-warm);
     box-shadow: var(--shadow-sm);
+  }
+
+  .quote-mark {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    line-height: 0.8;
+    color: var(--color-warm-light);
+    margin-bottom: var(--space-2);
+    display: block;
   }
 
   .quote {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-style: italic;
     color: var(--color-text);
     margin-bottom: var(--space-4);
+    line-height: 1.65;
   }
 
   .author {
     color: var(--color-text-muted);
     margin: 0;
     font-weight: 500;
+    font-size: 0.9rem;
   }
 
   @media (max-width: 900px) {
     .book-card {
       grid-template-columns: 1fr;
+      padding: var(--space-8) var(--space-6);
     }
 
     .book-cover-col {
-      max-width: 400px;
-      margin: 0 auto;
+      display: flex;
+      justify-content: center;
     }
 
     .metadata {

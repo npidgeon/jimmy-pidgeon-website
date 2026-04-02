@@ -6,12 +6,47 @@ import Footer from '../components/Footer.astro';
 interface Props {
 	title?: string;
 	description?: string;
+	isHomepage?: boolean;
 }
 
 const { 
 	title = 'Jimmy Pidgeon | Author & Recovery Advocate',
-	description = 'Jimmy Pidgeon is an author and recovery advocate. Discover his memoir "From the Streets to the Steps" and follow his journey of sobriety, family, and hope.'
+	description = 'Jimmy Pidgeon is an author and recovery advocate. Discover his memoir "From the Streets to the Steps" and follow his journey of sobriety, family, and hope.',
+	isHomepage = false,
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://jimmypidgeon.com').href;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jimmy Pidgeon",
+  "url": "https://jimmypidgeon.com",
+  "sameAs": [
+    "https://instagram.com/jcp83recovery",
+    "https://www.linkedin.com/in/jimmy-pidgeon-193b08199/"
+  ],
+  "jobTitle": "Author & Recovery Advocate",
+  "description": "Jimmy Pidgeon is a registered nurse, author, and devoted father whose life is a testament to the power of second chances."
+};
+
+const bookSchema = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "From the Streets to the Steps: One Day at a Time",
+  "author": {
+    "@type": "Person",
+    "name": "Jimmy Pidgeon"
+  },
+  "datePublished": "2026-01-06",
+  "isbn": "9798349689314",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Oracle Bookart Publishing"
+  },
+  "description": "A raw and unflinching memoir chronicling Jimmy's journey from the depths of addiction through the transformative power of recovery.",
+  "url": "https://jimmypidgeon.com/books"
+};
 ---
 
 <!doctype html>
@@ -19,14 +54,44 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Favicons -->
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+		<!-- Font preconnect for faster loading -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- Core Meta -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<!-- Open Graph / Meta -->
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph -->
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:site_name" content="Jimmy Pidgeon" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+
+		<!-- Sitemap -->
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<!-- Structured Data -->
+		{isHomepage && (
+			<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+			<script type="application/ld+json" set:html={JSON.stringify(bookSchema)} />
+		)}
 	</head>
 	<body>
 		<Header />
@@ -36,15 +101,16 @@ const {
 		<Footer />
 
 		<script>
-			// Intersection Observer for scroll animations
 			document.addEventListener('DOMContentLoaded', () => {
+				// Scroll reveal observer — handles all scroll-reveal variants
+				const revealClasses = ['.scroll-reveal', '.scroll-reveal-left', '.scroll-reveal-right'];
 				const observerOptions = {
 					root: null,
-					rootMargin: '0px',
+					rootMargin: '0px 0px -60px 0px',
 					threshold: 0.1
 				};
 
-				const observer = new IntersectionObserver((entries, observer) => {
+				const observer = new IntersectionObserver((entries) => {
 					entries.forEach(entry => {
 						if (entry.isIntersecting) {
 							entry.target.classList.add('visible');
@@ -53,9 +119,35 @@ const {
 					});
 				}, observerOptions);
 
-				document.querySelectorAll('.scroll-reveal').forEach((element) => {
-					observer.observe(element);
+				revealClasses.forEach(cls => {
+					document.querySelectorAll(cls).forEach(el => observer.observe(el));
 				});
+
+				// Header scroll behavior
+				const header = document.querySelector('.header') as HTMLElement | null;
+				if (header) {
+					const handleScroll = () => {
+						if (window.scrollY > 60) {
+							header.classList.add('scrolled');
+						} else {
+							header.classList.remove('scrolled');
+						}
+					};
+					window.addEventListener('scroll', handleScroll, { passive: true });
+					handleScroll();
+				}
+
+				// Back to top button
+				const backToTop = document.querySelector('#back-to-top') as HTMLElement | null;
+				if (backToTop) {
+					window.addEventListener('scroll', () => {
+						backToTop.classList.toggle('visible', window.scrollY > 400);
+					}, { passive: true });
+
+					backToTop.addEventListener('click', () => {
+						window.scrollTo({ top: 0, behavior: 'smooth' });
+					});
+				}
 			});
 		</script>
 	</body>

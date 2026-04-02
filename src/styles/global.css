@@ -2,21 +2,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
-  /* Colors */
+  /* Primary Blue Palette */
   --color-primary: hsl(210, 55%, 42%);
   --color-primary-light: hsl(210, 50%, 62%);
   --color-primary-dark: hsl(210, 60%, 28%);
-  
+
+  /* Teal Accent */
   --color-accent: hsl(175, 40%, 50%);
   --color-accent-light: hsl(175, 35%, 72%);
-  
+
+  /* Warm Amber Accent — calming, meditative, earthy warmth */
+  --color-warm: hsl(38, 65%, 52%);
+  --color-warm-light: hsl(38, 70%, 75%);
+  --color-warm-dark: hsl(38, 60%, 38%);
+
+  /* Backgrounds */
   --color-bg: hsl(210, 20%, 97%);
   --color-bg-alt: hsl(210, 15%, 92%);
+  --color-bg-warm: hsl(38, 30%, 96%);
   --color-surface: #ffffff;
-  
+
+  /* Text */
   --color-text: hsl(210, 20%, 18%);
   --color-text-muted: hsl(210, 10%, 50%);
-  
+
+  /* Borders */
   --color-border: hsl(210, 15%, 88%);
 
   /* Typography */
@@ -41,6 +51,7 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
 }
 
 /* Reset and Base Styles */
@@ -108,11 +119,13 @@ img {
   border-radius: var(--radius);
   font-family: var(--font-body);
   font-weight: 500;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
   cursor: pointer;
   border: none;
   text-align: center;
+  letter-spacing: 0.01em;
 }
 
 .btn-primary {
@@ -130,7 +143,7 @@ img {
 .btn-secondary {
   background-color: transparent;
   color: var(--color-primary);
-  border: 1px solid var(--color-primary);
+  border: 1.5px solid var(--color-primary);
 }
 
 .btn-secondary:hover {
@@ -152,11 +165,53 @@ img {
   box-shadow: var(--shadow-md);
 }
 
+/* Warm / Amber CTA button */
+.btn-warm {
+  background-color: var(--color-warm);
+  color: white;
+}
+
+.btn-warm:hover {
+  background-color: var(--color-warm-dark);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(180, 130, 55, 0.35);
+}
+
+.btn-warm-outline {
+  background-color: transparent;
+  color: var(--color-warm);
+  border: 1.5px solid var(--color-warm);
+}
+
+.btn-warm-outline:hover {
+  background-color: var(--color-warm);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Section utilities */
+.section-bg-warm {
+  background-color: var(--color-bg-warm);
+}
+
 /* Animation Utilities */
 .fade-in-up {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  animation: fadeInRight 0.8s ease-out forwards;
 }
 
 @keyframes fadeInUp {
@@ -166,11 +221,26 @@ img {
   }
 }
 
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
 
-/* Intersection Observer utility class */
+/* Intersection Observer utility classes */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -180,4 +250,41 @@ img {
 .scroll-reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Noscript fallback — ensure content visible without JS */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .fade-in-up,
+  .fade-in-left,
+  .fade-in-right {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }
