@@ -27,11 +27,12 @@
       </div>
     </div>
     
-    <div class="scroll-indicator fade-in-up delay-400">
-      <div class="chevron"></div>
-      <div class="chevron"></div>
-      <div class="chevron"></div>
-    </div>
+  </div>
+
+  <div class="scroll-indicator fade-in-up delay-400">
+    <div class="chevron"></div>
+    <div class="chevron"></div>
+    <div class="chevron"></div>
   </div>
 </section>
 
@@ -90,6 +91,7 @@
     position: relative;
     width: 100%;
     padding-top: 80px; /* Account for fixed header */
+    padding-bottom: 80px; /* Clear space above scroll indicator */
   }
   
   .hero-text {
@@ -152,13 +154,14 @@
   
   .scroll-indicator {
     position: absolute;
-    bottom: 40px;
+    bottom: 32px;
     left: 50%;
     transform: translateX(-50%);
     width: 28px;
     height: 48px;
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 600ms forwards;
+    z-index: 2;
   }
   
   .chevron {
@@ -222,7 +225,11 @@
     }
 
     .scroll-indicator {
-      bottom: 24px;
+      bottom: 20px;
+    }
+
+    .hero-content {
+      padding-bottom: 60px;
     }
   }
 </style>

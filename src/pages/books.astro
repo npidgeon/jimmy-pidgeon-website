@@ -2,12 +2,30 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from 'astro:assets';
 import coverImg from '../assets/images/cover.png';
+const bookSchema = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "From the Streets to the Steps: One Day at a Time",
+  "author": {
+    "@type": "Person",
+    "name": "Jimmy Pidgeon"
+  },
+  "datePublished": "2026-01-06",
+  "isbn": "9798349689314",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Oracle Bookart Publishing"
+  },
+  "description": "A raw and unflinching memoir chronicling Jimmy's journey from the depths of addiction through the transformative power of recovery.",
+  "url": "https://jimmypidgeon.com/books"
+};
 ---
 
 <Layout
   title="Books by Jimmy Pidgeon | From the Streets to the Steps"
   description="Explore 'From the Streets to the Steps: One Day at a Time,' a powerful memoir by Jimmy Pidgeon. Available in paperback and hardcover on Amazon, Barnes & Noble, and Target."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(bookSchema)} />
   <div class="page-hero">
     <div class="page-hero-pattern" aria-hidden="true"></div>
     <div class="container">
@@ -100,7 +118,7 @@ import coverImg from '../assets/images/cover.png';
               </a>
               <!-- Target -->
               <a
-                href="https://www.target.com/s?searchTerm=9798349689314"
+                href="https://www.target.com/p/from-the-streets-to-the-steps-by-jimmy-pidgeon-paperback/-/A-1009427426#lnk=sametab"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="retailer-btn"
@@ -112,6 +130,103 @@ import coverImg from '../assets/images/cover.png';
                   <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"></circle>
                 </svg>
                 Target
+              </a>
+              <!-- Walmart -->
+              <a
+                href="https://www.walmart.com/ip/From-the-Streets-to-the-Steps-Hardcover/19075569383"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="retailer-btn"
+                id="buy-walmart-btn"
+              >
+                <svg class="retailer-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2l1.09 3.36L16.5 3.5l-1.5 3.18L18.5 8l-3.41.41L16 12l-3-1.5L12 14l-1-3.5L8 12l.91-3.59L5.5 8l3.5-1.32L7.5 3.5l3.41 1.86L12 2z"/>
+                </svg>
+                Walmart
+              </a>
+              <!-- Books-A-Million -->
+              <a
+                href="https://www.booksamillion.com/p/From-Streets-Steps/Jimmy-Pidgeon/9798349689406"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="retailer-btn"
+                id="buy-bam-btn"
+              >
+                <svg class="retailer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Books-A-Million
+              </a>
+              <!-- Strand Books -->
+              <a
+                href="https://www.strandbooks.com/from-the-streets-to-the-steps-9798349689406.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="retailer-btn"
+                id="buy-strand-btn"
+              >
+                <svg class="retailer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Strand Books
+              </a>
+              <!-- Booktopia -->
+              <a
+                href="https://www.booktopia.com.au/from-the-streets-to-the-steps-jimmy-pidgeon/book/9798349689406.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="retailer-btn"
+                id="buy-booktopia-btn"
+              >
+                <svg class="retailer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Booktopia
+              </a>
+              <!-- Bookscape -->
+              <a
+                href="https://bookscape.com/product-details/from-the-streets-to-the-steps-9798349689406"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="retailer-btn"
+                id="buy-bookscape-btn"
+              >
+                <svg class="retailer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Bookscape
+              </a>
+              <!-- Waterstones -->
+              <a
+                href="https://www.waterstones.com/book/from-the-streets-to-the-steps/jimmy-pidgeon/ben-rose/9798349689406"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="retailer-btn"
+                id="buy-waterstones-btn"
+              >
+                <svg class="retailer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Waterstones
+              </a>
+              <!-- The Nile -->
+              <a
+                href="https://www.thenile.co.nz/books/jimmy-pidgeon/from-the-streets-to-the-steps/9798349689406"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="retailer-btn"
+                id="buy-nile-btn"
+              >
+                <svg class="retailer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                The Nile
               </a>
             </div>
           </div>

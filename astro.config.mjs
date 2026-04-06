@@ -6,4 +6,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://jimmypidgeon.com',
   integrations: [sitemap()],
+  image: {
+    experimentalLayout: 'responsive',
+  },
 });

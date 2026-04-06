@@ -61,9 +61,15 @@ const bookSchema = {
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
-		<!-- Font preconnect for faster loading -->
+		<!-- Font preconnect and load -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" />
+
+		<!-- Preload hero image on homepage -->
+		{isHomepage && (
+			<link rel="preload" as="image" href="/assets/images/hero_bg.png" fetchpriority="high" />
+		)}
 
 		<meta name="generator" content={Astro.generator} />
 
@@ -123,27 +129,25 @@ const bookSchema = {
 					document.querySelectorAll(cls).forEach(el => observer.observe(el));
 				});
 
-				// Header scroll behavior
+				// Combined scroll behavior for header and back-to-top
 				const header = document.querySelector('.header') as HTMLElement | null;
-				if (header) {
-					const handleScroll = () => {
-						if (window.scrollY > 60) {
-							header.classList.add('scrolled');
-						} else {
-							header.classList.remove('scrolled');
-						}
-					};
-					window.addEventListener('scroll', handleScroll, { passive: true });
-					handleScroll();
-				}
-
-				// Back to top button
 				const backToTop = document.querySelector('#back-to-top') as HTMLElement | null;
-				if (backToTop) {
-					window.addEventListener('scroll', () => {
-						backToTop.classList.toggle('visible', window.scrollY > 400);
-					}, { passive: true });
+				
+				const handleScroll = () => {
+					const y = window.scrollY;
+					if (header) {
+						if (y > 60) header.classList.add('scrolled');
+						else header.classList.remove('scrolled');
+					}
+					if (backToTop) {
+						backToTop.classList.toggle('visible', y > 400);
+					}
+				};
 
+				window.addEventListener('scroll', handleScroll, { passive: true });
+				handleScroll(); // Init state
+
+				if (backToTop) {
 					backToTop.addEventListener('click', () => {
 						window.scrollTo({ top: 0, behavior: 'smooth' });
 					});

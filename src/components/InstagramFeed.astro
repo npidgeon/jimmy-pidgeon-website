@@ -40,7 +40,26 @@
   </div>
 </section>
 
-<script async src="//www.instagram.com/embed.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const instagramSection = document.getElementById('instagram-feed');
+    if (!instagramSection) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        // Load Instagram embed script lazily
+        const script = document.createElement('script');
+        script.src = "//www.instagram.com/embed.js";
+        script.async = true;
+        document.body.appendChild(script);
+        
+        observer.disconnect();
+      }
+    }, { rootMargin: '200px' });
+
+    observer.observe(instagramSection);
+  });
+</script>
 
 <style>
   .section-padding {
